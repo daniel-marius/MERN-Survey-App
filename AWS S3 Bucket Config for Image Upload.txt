@@ -1,0 +1,32 @@
+CORS Configuration
+
+<CORSConfiguration>
+<CORSRule>
+    <AllowedOrigin>*</AllowedOrigin>
+    <AllowedMethod>GET</AllowedMethod>
+    <MaxAgeSeconds>3000</MaxAgeSeconds>
+    <AllowedHeader>Authorization</AllowedHeader>
+</CORSRule>
+<CORSRule>
+    <AllowedOrigin>http://localhost:3000</AllowedOrigin>
+    <AllowedMethod>PUT</AllowedMethod>
+    <MaxAgeSeconds>3000</MaxAgeSeconds>
+    <AllowedHeader>*</AllowedHeader>
+</CORSRule>
+</CORSConfiguration>
+
+Bucket Policy (recommended to do it by using policy generator)
+
+{
+    "Version": "2012-10-17",
+    "Id": "Policy1587634160361",
+    "Statement": [
+        {
+            "Sid": "Stmt1587634158966",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::bucket-name/*"
+        }
+    ]
+}
